@@ -161,6 +161,19 @@
   .fab .wa-ic{width:21px;height:21px}
   @keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
 
+  .lead-form{display:flex;flex-direction:column;gap:11px;max-width:430px}
+  .lead-form .fr{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+  .lead-form input{width:100%;padding:14px 17px;border:1px solid var(--line);border-radius:12px;font-size:15.5px;font-family:inherit;background:#fff;color:var(--ink)}
+  .lead-form input::placeholder{color:#9aa3ad}
+  .lead-form input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(176,141,87,.16)}
+  .lead-form button{justify-content:center;width:100%;border:none;font-family:inherit}
+  .form-fine{font-size:12.5px;color:var(--ink-mute);margin:3px 0 0;text-align:center}
+  .form-fine b{color:var(--gold-deep)}
+  .cta .lead-form{margin:0 auto}
+  .cta .lead-form input{background:rgba(255,255,255,.97)}
+  .cta .form-fine{color:#9aa2ab}.cta .form-fine b{color:var(--gold-soft)}
+  @media(max-width:520px){ .lead-form .fr{grid-template-columns:1fr} }
+
   @media(max-width:880px){
     .hero .wrap{grid-template-columns:1fr;gap:34px;padding-top:48px;padding-bottom:54px}
     .hero .frame{transform:rotate(-1deg);max-width:420px;margin:0 auto}
@@ -179,9 +192,9 @@
 <!-- Meta Pixel: Megah (El Track) -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','4372773073036972');fbq('track','PageView');
+fbq('init','1002067508300383');fbq('track','PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=4372773073036972&ev=PageView&noscript=1"/></noscript>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1002067508300383&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute"><symbol id="wa" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.13c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.25-8.25 8.25zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></symbol></svg>
@@ -207,10 +220,15 @@ fbq('init','4372773073036972');fbq('track','PageView');
       <span class="eyebrow">Hiasan Logam Custom dari Foto</span>
       <h1>Ubah Kenangan Jadi <span class="gilt">Karya Baja</span> yang Abadi</h1>
       <p class="lead">Kirim satu foto — wajah couple, keluarga, anabul, atau rumah. Kami ubah jadi line-art dan potong presisi dengan laser dari plat baja anti-karat. Sebuah pajangan mewah yang bikin tamu bertanya <i>"ini beli di mana?"</i></p>
-      <div class="hero-cta">
-        <a class="btn btn-wa j-wa"><svg class="wa-ic"><use href="#wa"/></svg> Konsultasi Desain Gratis</a>
-        <a class="btn btn-ghost" href="#karya">Lihat Karya ↓</a>
-      </div>
+      <form class="lead-form j-form" onsubmit="return submitLead(event,this)">
+        <div class="fr">
+          <input name="nama" type="text" placeholder="Nama kamu" required />
+          <input name="hp" type="tel" placeholder="No. WhatsApp (08…)" required inputmode="numeric" />
+        </div>
+        <button type="submit" class="btn btn-wa"><svg class="wa-ic"><use href="#wa"/></svg> Konsultasi Gratis via WhatsApp</button>
+        <p class="form-fine">Isi data, kami balas cepat di WhatsApp • Gratis konsultasi desain • Kode <b>R21</b></p>
+      </form>
+      <p style="margin:14px 0 0;font-size:14.5px"><a href="#karya" style="color:var(--gold-deep);font-weight:700">Lihat contoh karya ↓</a></p>
       <div class="chips">
         <span><i>✦</i> Presisi laser 0,1mm</span>
         <span><i>✦</i> Baja anti-karat</span>
@@ -360,8 +378,14 @@ fbq('init','4372773073036972');fbq('track','PageView');
     <span class="eyebrow">Mulai Sekarang</span>
     <h2>Punya Foto yang Ingin Diabadikan?</h2>
     <p>Chat kami sekarang. Ceritakan idemu, dapatkan mockup desain gratis, tanpa kewajiban beli.</p>
-    <a class="btn btn-wa j-wa"><svg class="wa-ic"><use href="#wa"/></svg> Konsultasi Gratis via WhatsApp</a>
-    <p class="fine">Sebutkan kode <b>R21</b> saat chat untuk pelayanan prioritas ✦</p>
+    <form class="lead-form j-form" onsubmit="return submitLead(event,this)" style="max-width:460px">
+      <div class="fr">
+        <input name="nama" type="text" placeholder="Nama kamu" required />
+        <input name="hp" type="tel" placeholder="No. WhatsApp (08…)" required inputmode="numeric" />
+      </div>
+      <button type="submit" class="btn btn-wa"><svg class="wa-ic"><use href="#wa"/></svg> Kirim & Chat Sekarang</button>
+      <p class="form-fine">Tanpa kewajiban beli • Sebutkan kode <b>R21</b> ✦</p>
+    </form>
   </div>
 </section>
 
@@ -387,6 +411,15 @@ fbq('init','4372773073036972');fbq('track','PageView');
     if(prod) t+=' — '+prod;
     t+='. Boleh dibantu konsultasi desainnya? (Kode: R21)';
     return 'https://wa.me/'+WA+'?text='+encodeURIComponent(t);
+  }
+  function submitLead(e,form){
+    e.preventDefault();
+    var nama=(form.nama.value||'').trim(), hp=(form.hp.value||'').replace(/[^0-9+]/g,'');
+    if(nama.length<2||hp.length<8){ alert('Isi nama & no WhatsApp yang valid ya 🙏'); return false; }
+    if(window.fbq) fbq('track','Lead',{content_name:'Megah Form',content_category:'laser_cutting'});
+    var t='Halo Megah Laser Cutting! 👋 Saya '+nama+' (No: '+hp+'). Saya mau konsultasi karya logam custom dari foto. Kode: R21';
+    window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(t),'_blank');
+    return false;
   }
   document.querySelectorAll('.j-wa').forEach(function(el){
     el.setAttribute('href', waHref(el.getAttribute('data-prod')));
