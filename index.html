@@ -417,6 +417,7 @@ fbq('init','1002067508300383');fbq('track','PageView');
     var nama=(form.nama.value||'').trim(), hp=(form.hp.value||'').replace(/[^0-9+]/g,'');
     if(nama.length<2||hp.length<8){ alert('Isi nama & no WhatsApp yang valid ya 🙏'); return false; }
     if(window.fbq) fbq('track','Lead',{content_name:'Megah Form',content_category:'laser_cutting'});
+    try{ fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},keepalive:true,body:JSON.stringify({nama:nama,hp:hp,angle:(new URLSearchParams(location.search)).get('utm_content')||'',src:location.search})}); }catch(_){}
     var t='Halo Megah Laser Cutting! 👋 Saya '+nama+' (No: '+hp+'). Saya mau konsultasi karya logam custom dari foto. Kode: R21';
     window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(t),'_blank');
     return false;
