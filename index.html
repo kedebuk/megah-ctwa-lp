@@ -220,7 +220,7 @@ fbq('init','1002067508300383');fbq('track','PageView');
       <span class="eyebrow">Hiasan Logam Custom dari Foto</span>
       <h1>Ubah Kenangan Jadi <span class="gilt">Karya Baja</span> yang Abadi</h1>
       <p class="lead">Kirim satu foto — wajah couple, keluarga, anabul, atau rumah. Kami ubah jadi line-art dan potong presisi dengan laser dari plat baja anti-karat. Sebuah pajangan mewah yang bikin tamu bertanya <i>"ini beli di mana?"</i></p>
-      <form class="lead-form j-form" onsubmit="return submitLead(event,this)">
+      <form id="isi-form" class="lead-form j-form" onsubmit="return submitLead(event,this)">
         <div class="fr">
           <input name="nama" type="text" placeholder="Nama kamu" required />
           <input name="hp" type="tel" placeholder="No. WhatsApp (08…)" required inputmode="numeric" />
@@ -422,10 +422,19 @@ fbq('init','1002067508300383');fbq('track','PageView');
     window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(t),'_blank');
     return false;
   }
+  // semua tombol WA -> ngarah ke FORM (bukan wa.me). Lead cuma dari submit form.
   document.querySelectorAll('.j-wa').forEach(function(el){
-    el.setAttribute('href', waHref(el.getAttribute('data-prod')));
-    el.setAttribute('target','_blank'); el.setAttribute('rel','noopener');
-    el.addEventListener('click', function(){ if(window.fbq) fbq('track','Lead',{content_name:el.getAttribute('data-prod')||'WA Contact'}); });
+    el.setAttribute('href', '#isi-form');
+    el.removeAttribute('target');
+    el.addEventListener('click', function(ev){
+      ev.preventDefault();
+      var f=document.getElementById('isi-form');
+      if(f){
+        f.scrollIntoView({behavior:'smooth',block:'center'});
+        var inp=f.querySelector('input[name=nama]');
+        if(inp) setTimeout(function(){ try{inp.focus({preventScroll:true});}catch(_){inp.focus();} },450);
+      }
+    });
   });
 </script>
 </body>
